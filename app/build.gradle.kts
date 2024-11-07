@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.hal_domae.kadai07_ih13"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.hal_domae.kadai07_ih13"
