@@ -1,5 +1,6 @@
 package com.hal_domae.kadai07_ih13
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.SimpleAdapter
@@ -49,12 +50,17 @@ class MainActivity : AppCompatActivity() {
             arrayOf("image","name"),
             intArrayOf(R.id.image, R.id.name)
         )
-        binding.list.setOnItemClickListener { adapterView, view, i, l ->
-            Toast.makeText(
-                this@MainActivity,
-                "${listData[i]["name"]}を選択しました",
-                Toast.LENGTH_SHORT
-            ).show()
+        binding.list.setOnItemClickListener { _, _, i, _ ->
+//            Toast.makeText(
+//                this@MainActivity,
+//                "${listData[i]["name"]}を選択しました",
+//                Toast.LENGTH_SHORT
+//            ).show()
+            startActivity(
+                Intent(this@MainActivity, DetailActivity::class.java).apply {
+                    putExtra("POSITION", i)
+                }
+            )
         }
     }
 }
