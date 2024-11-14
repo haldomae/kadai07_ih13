@@ -2,6 +2,7 @@ package com.hal_domae.kadai07_ih13
 
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -40,5 +41,12 @@ class MainActivity : AppCompatActivity() {
             android.R.layout.simple_expandable_list_item_1,
             data
         )
+        binding.list.setOnItemClickListener { adapterView, view, i, l ->
+            Toast.makeText(
+                this@MainActivity,
+                "${data[i]}を選択しました",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 }
