@@ -2,6 +2,7 @@ package com.hal_domae.kadai07_ih13
 
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.SimpleAdapter
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -36,15 +37,22 @@ class MainActivity : AppCompatActivity() {
         // 1つ目の引数thisはコンテキスト(アプリやアクティビティの情報)
         // 2つ目の引数はリストの各項目に使うレイアウト(R.layout.simple_expandable_list_item_1はテキスト項目が1つだけあるレイアウト)
         // 3つ目の引数はリストに表示するデータ
-        binding.list.adapter = ArrayAdapter(
+//        binding.list.adapter = ArrayAdapter(
+//            this,
+//            android.R.layout.simple_expandable_list_item_1,
+//            data
+//        )
+        binding.list.adapter = SimpleAdapter(
             this,
-            android.R.layout.simple_expandable_list_item_1,
-            data
+            listData,
+            R.layout.list_item,
+            arrayOf("image","name"),
+            intArrayOf(R.id.image, R.id.name)
         )
         binding.list.setOnItemClickListener { adapterView, view, i, l ->
             Toast.makeText(
                 this@MainActivity,
-                "${data[i]}を選択しました",
+                "${listData[i]["name"]}を選択しました",
                 Toast.LENGTH_SHORT
             ).show()
         }
